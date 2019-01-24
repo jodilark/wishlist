@@ -1,0 +1,5 @@
+<app-item-creator></app-item-creator>
+<h4>List</h4>
+<div class="list" *ngFor="let item of itemList">
+    <app-card [passedItem]="item"></app-card>
+</div>
