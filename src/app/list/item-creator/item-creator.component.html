@@ -1,0 +1,16 @@
+<div class="creator_container">
+  <form ng-form #itemForm class="form" autocomplete="off">
+    <input type="text" placeholder="Item" [(ngModel)]="name" name="anything" appFormatter>
+    <input type="number" step=".01" value="0.00"placeholder="0.00" [(ngModel)]="cost" name="anything">
+    <input type="date" placeholder="When do you want it" [(ngModel)]="dueDate" name="anything">
+    <div>
+      <button (click)="createAndGenerate(); itemForm.reset()">Create and Generate Schedule</button>
+      <button (click)="itemForm.reset()">Add Details</button>
+    </div>
+  </form>
+  <div>
+    <p>item {{name}}</p>
+    <p>how much {{cost}}</p>
+    <p>wantByDate {{dueDate | date}}</p>
+  </div>
+</div>

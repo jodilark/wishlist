@@ -5,15 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { CardComponent } from './list/card/card.component';
-import { ItemCreatorComponent } from './item-creator/item-creator.component';
+import { ItemCreatorComponent } from './list/item-creator/item-creator.component';
 import { FormsModule } from '@angular/forms';
+import { FormatterDirective } from './shared/formatter.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     CardComponent,
-    ItemCreatorComponent
+    ItemCreatorComponent,
+    FormatterDirective
   ],
   imports: [
     BrowserModule,

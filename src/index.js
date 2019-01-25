@@ -32,10 +32,51 @@ app.use(bodyParser.json());
 //     app.set('db', db),
 //       console.log('connected to database')
 //   });
+var durations = ['Weekly', 'Every Other Week', 'Bi-Monthly', 'Monthly', 'Quarterly', 'Bi-annually', 'Yearly'];
+var items = [
+    {
+        id:1,
+        name:'motorcycle',
+        cost:5000,
+        dueDate: new Date('2019-07-01'),
+        amount:50,
+        duration:durations[1],
+        ready:false
+    },
+    {
+        id:2,
+        name:'Hot Tub',
+        cost:4000,
+        dueDate: new Date('2019-10-01'),
+        amount:100,
+        duration:durations[2],
+        ready:true
+    },
+    {
+        id:3,
+        name:'Bowie Concert',
+        cost:4000,
+        dueDate: new Date('2019-10-13'),
+        amount:100,
+        duration:durations[3],
+        ready:true
+    }
+]
 
 //ITEMS
 app.get('/api/items', (req, res, next) => {
-    res.status(200).send('I got it!');
+    res.status(200).send(items);
+});
+app.post('/api/createItem', (req, res, next) => {
+    items.push({
+        name: req.body.name,
+        cost: req.body.cost,
+        dueDate: req.body.dueDate,
+        amount: req.body.amount,
+        duration:req.body.duration,
+        ready:req.body.ready
+    })
+    res.status(200).send(items)
 });
 
 app.listen(port, function(){
