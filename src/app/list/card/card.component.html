@@ -1,3 +1,11 @@
-<p>
-  {{passedItem.name}}
-</p>
+<ul class="table_body">
+  <li>
+    <p>{{passedItem.name}}</p>
+    <p>{{passedItem.cost | currency}}</p>
+  </li>
+  <li>
+    <span>{{passedItem.amount | currency}}</span><span>|</span><span>{{passedItem.duration}}</span>
+  </li>
+  <li>{{passedItem.dueDate | date}}</li>
+  <li>{{passedItem.ready}}</li>
+</ul>
