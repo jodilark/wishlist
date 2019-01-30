@@ -1,0 +1,22 @@
+<app-item-creator (newItem)="onNewItem($event)"></app-item-creator>
+<h4>List</h4>
+<div>
+  <div class="table_header">
+    <ul>
+      <li>
+        <p>Name</p>
+        <p>Cost</p>
+      </li>
+      <li>
+        <span>Deposit</span><span>|</span><span>Frequency</span>
+      </li>
+      <li>Due</li>
+      <li>Ready</li>
+    </ul>
+  </div>
+  <div class="list_container">
+    <div class="list" *ngFor="let item of itemList">
+        <app-card [passedItem]="item"></app-card>
+    </div>
+  </div>
+</div>

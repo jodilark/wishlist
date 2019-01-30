@@ -1,0 +1,55 @@
+<div class="creator_container">
+  <form ng-form #itemForm class="form" autocomplete="off">
+    <div class="input_group_default" >
+      <label for="name">Item</label>
+      <input type="text" [(ngModel)]="name" name="name" appInputFormatter ng-required="true">
+    </div>
+    <div class="input_group_default">
+      <label for="cost">Cost</label>
+      <input type="number" step=".01" placeholder="0.00" [(ngModel)]="cost" name="cost" appInputFormatter onfocus="this.select();">
+    </div>
+    <div *ngIf="dateOrAmount === 'Date'" class="input_group_default">
+      <label for="dueDate">When do you want it?</label>
+      <input type="date" placeholder="When do you want it" [(ngModel)]="dueDate" name="dueDate" appInputFormatter>
+    </div>
+    <div *ngIf="additionalDetails" class="additional_details">
+      <div class="radio_input">
+        <label>Get By</label>
+        <span>
+          <label><input type="radio" [(ngModel)]="dateOrAmount" name="date" value="Date" ><span for="date">Date</span></label>
+          <label><input type="radio" [(ngModel)]="dateOrAmount" name="amount" value="Amount" ><span>Saving</span></label>
+        </span>
+      </div>
+      <div class="input_group_default">
+        <label for="nextPayDate">Next Pay Date</label>
+        <input type="date" placeholder="next pay date" [(ngModel)]="nextPayDate" name="nextPayDate" appInputFormatter>
+      </div>
+      <div *ngIf="dateOrAmount === 'Amount'">
+        <div class="input_group_default">
+          <label for="deposit">Deposit</label>
+          <input type="number" [(ngModel)]="deposit" name="deposit" placeholder="0.00" step="0.01" appInputFormatter>
+        </div>
+        <div class="input_group_default">
+          <label for="frequency">Frequency of deposit</label>
+          <select [(ngModel)]="frequency" name="frequency" appInputFormatter>
+            <option [ngValue]="null">Select</option>
+            <option *ngFor="let duration of durations" [value]="duration">{{duration}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form_controls">
+      <button *ngIf="!additionalDetails" (click)="createAndGenerate();itemForm.submit(); itemForm.reset()">Create and Generate Schedule</button>
+      <button type="submit" *ngIf="additionalDetails" (click)="create();itemForm.reset()">Submit</button>
+      <button *ngIf="!additionalDetails" (click)="addDetails()">Add Details</button>
+    </div>
+  </form>
+  <div>
+    <p>item {{name}}</p>
+    <p>how much {{cost | currency}}</p>
+    <p>wantByDate {{dueDate | date}}</p>
+    <p>next pay date {{nextPayDate | date}}</p>
+    <p>Depoosit {{deposit | currency}}</p>
+    <p>Duration {{frequency}}</p>
+  </div>
+</div>
