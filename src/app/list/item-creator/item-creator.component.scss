@@ -1,0 +1,105 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+.input_group_default {
+    width: 200px;
+    border: 1px solid lightgray;
+    height: 40px;
+    padding: 9px 5px;
+    position: relative;
+    label{
+        color: slategray;
+    }
+    input, select {
+        display: inherit;
+        position: absolute;
+        top: 0px;
+        left:0px;
+        background: transparent;
+        border: none;
+        height: 100%;
+        width: 100%;
+        padding-top: 14px;
+        z-index: 1;
+        outline: none;
+    }
+}
+.input_group_focus {
+    width: 200px;
+    height: 40px;
+    position: relative;
+    label {
+        font-size: 0.8em;
+        letter-spacing: .1em;
+        position: absolute;
+        color: inherit;
+        top:2px;
+        left:3px;
+    }
+    input, select {
+        display: inherit;
+        position: absolute;
+        top: 0px;
+        left:0px;
+        background: transparent;
+        height: 100%;
+        width: 100%;
+        padding-top: 14px;
+        z-index: 1;
+        border: 1px solid lightgray;
+    }
+    input:focus, select:focus {
+        border: 2px solid cornflowerblue;
+        outline: none;
+    }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    border-radius: 0px;
+}
+.radio_input {
+    height: 40px;
+    width: 200px;
+    border: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3px;
+    label {
+        font-size: 0.8em;
+        letter-spacing: .1em;
+    }
+    span {
+        display: flex;
+        justify-content: space-between;
+        & label {
+            font-size: initial;
+            letter-spacing: initial;
+            display: inherit;
+            & span {
+                display: initial;
+                margin-left: 5px;
+            }
+        }
+    }   
+}
+
+.form_controls {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    button {
+        height: 40px;
+        min-height: 40px;
+    }
+}

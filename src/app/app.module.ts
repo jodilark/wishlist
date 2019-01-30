@@ -8,6 +8,7 @@ import { CardComponent } from './list/card/card.component';
 import { ItemCreatorComponent } from './list/item-creator/item-creator.component';
 import { FormsModule } from '@angular/forms';
 import { FormatterDirective } from './shared/formatter.directive';
+import { InputFormatterDirective } from './shared/input-formatter.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormatterDirective } from './shared/formatter.directive';
     ListComponent,
     CardComponent,
     ItemCreatorComponent,
-    FormatterDirective
+    FormatterDirective,
+    InputFormatterDirective
   ],
   imports: [
     BrowserModule,

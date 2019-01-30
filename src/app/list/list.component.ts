@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Item } from '../item.model';
 import { ItemCrudService } from '../shared/item-crud.service';
 
+const local:any = new Date();
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -23,8 +25,19 @@ export class ListComponent implements OnInit {
 
   ngOnInit(){
     this.itemService.getItems().then(res => {
-      this.itemList = res;
+      this.setRdyStatus(res);
     });
+  }
+
+  setRdyStatus(res:any){
+    res.map((e,i) => {
+      if(Date.parse(local) >= Date.parse(e.dueDate)){
+        e.ready = true;
+      } else {
+        e.ready = false;
+      }
+    });
+    this.itemList = res;
   }
 
   

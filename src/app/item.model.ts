@@ -3,7 +3,9 @@ export class Item {
     name:string;
     cost:number;
     dueDate:Date;
-    amount:number;
-    duration:string;
     ready?:boolean;
+    nextPayDate:Date;
+    deposit:number;
+    frequency:string;
+    additionalDetails?:boolean;
 }

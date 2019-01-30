@@ -32,34 +32,29 @@ app.use(bodyParser.json());
 //     app.set('db', db),
 //       console.log('connected to database')
 //   });
-var durations = ['Weekly', 'Every Other Week', 'Bi-Monthly', 'Monthly', 'Quarterly', 'Bi-annually', 'Yearly'];
+var durations = ['Daily', 'Weekly', 'Every Other Week', 'Bi-Monthly', 'Monthly', 'Quarterly', 'Bi-annually', 'Yearly'];
 var items = [
     {
-        id:1,
         name:'motorcycle',
         cost:5000,
         dueDate: new Date('2019-07-01'),
-        amount:50,
-        duration:durations[1],
+        deposit:50,
+        frequency:durations[1],
         ready:false
     },
     {
-        id:2,
         name:'Hot Tub',
         cost:4000,
         dueDate: new Date('2019-10-01'),
-        amount:100,
-        duration:durations[2],
-        ready:true
+        deposit:100,
+        frequency:durations[2]
     },
     {
-        id:3,
         name:'Bowie Concert',
         cost:4000,
         dueDate: new Date('2019-10-13'),
-        amount:100,
-        duration:durations[3],
-        ready:true
+        deposit:100,
+        frequency:durations[3]
     }
 ]
 
@@ -72,8 +67,8 @@ app.post('/api/createItem', (req, res, next) => {
         name: req.body.name,
         cost: req.body.cost,
         dueDate: req.body.dueDate,
-        amount: req.body.amount,
-        duration:req.body.duration,
+        deposit: req.body.deposit,
+        frequency:req.body.frequency,
         ready:req.body.ready
     })
     res.status(200).send(items)
