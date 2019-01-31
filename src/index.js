@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
     //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8010');
-    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+    res.header('Access-Control-Allow-Methods', 'GET, OPTIONS, PUT, POST, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     res.header('Access-Control-Allow-Credentials', true);
     return next();
@@ -72,6 +72,14 @@ app.post('/api/createItem', (req, res, next) => {
         ready:req.body.ready
     })
     res.status(200).send(items)
+});
+
+app.delete('/api/deleteItems', (req, res, next) => {
+    console.log(req.body)
+    // items.foreach((e, i)=>{
+    //     items.splice(req.body.indexOf(e), 1);
+    // });
+    res.status(200).send(req.body);
 });
 
 app.listen(port, function(){

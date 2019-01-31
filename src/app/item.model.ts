@@ -8,4 +8,5 @@ export class Item {
     deposit:number;
     frequency:string;
     additionalDetails?:boolean;
+    selected?:boolean;
 }

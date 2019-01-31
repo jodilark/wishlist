@@ -9,8 +9,13 @@ ul {
         padding: 5px;
         display: flex;
         align-items: center;
+        justify-content: flex-start;
         & p {
             margin: 0px;
+        }
+        > span:first-child{
+            display: block;
+            min-width: 65px;
         }
         span:nth-child(2) {
             margin: 0px 10px;
@@ -20,4 +25,7 @@ ul {
         flex-direction: column;
         align-items: initial;
     }
+}
+ul.selected{
+    background: rgba(0, 0, 0, .5);
 }

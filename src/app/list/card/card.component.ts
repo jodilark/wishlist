@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../../item.model';
 
 @Component({
@@ -8,9 +8,15 @@ import { Item } from '../../item.model';
 })
 export class CardComponent implements OnInit {
   @Input() passedItem = new Item;
+  @Output() selectedItem = new EventEmitter<Item>();
+  selected:boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+  toggleRowSelect(){
+    this.selected = !this.selected;
+    this.passedItem.selected = this.selected;
+    this.selectedItem.emit(this.passedItem);
+  }
 }

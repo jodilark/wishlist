@@ -16,7 +16,8 @@
   </div>
   <div class="list_container">
     <div class="list" *ngFor="let item of itemList">
-        <app-card [passedItem]="item"></app-card>
+        <app-card [passedItem]="item" (selectedItem)="onSelectedItem($event)"></app-card>
     </div>
   </div>
 </div>
+<button (click)="deleteSelected()">Delete Selected</button>

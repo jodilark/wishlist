@@ -1,4 +1,4 @@
-<ul class="table_body">
+<ul class="table_body" (click)="toggleRowSelect()" [ngClass]="selected? 'selected' : ''">
   <li>
     <p>{{passedItem.name}}</p>
     <p>{{passedItem.cost | currency}}</p>

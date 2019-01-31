@@ -92,4 +92,9 @@ export class ItemCrudService {
     item.additionalDetails ? this.createSchedule(item) : this.generateSchedule(item);
     return this.http.post(this.url + 'createItem', item).toPromise();
   }
+
+  deleteItems(items){
+    console.log('items to delete: ', items);
+    return this.http.delete(this.url + 'deleteItems', items).toPromise();
+  }
 }
