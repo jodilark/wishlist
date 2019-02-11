@@ -1,8 +1,9 @@
+@import "../../../styles.scss";
 ul {
     list-style: none;
     display: inline-grid;
-    grid-template-rows: auto;
-    grid-template-columns: 125px 200px 100px 60px;
+    grid-template-rows: minmax(40px, auto);
+    grid-template-columns: $grid-col-one $grid-col-two $grid-col-three $grid-col-four;
     margin: 0px;
     padding: 0px;
     & li {
@@ -10,12 +11,14 @@ ul {
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        color: $input-color;
+        font-size: 13px;
         & p {
             margin: 0px;
         }
         > span:first-child{
             display: block;
-            min-width: 65px;
+            min-width: 48px;
         }
         span:nth-child(2) {
             margin: 0px 10px;
@@ -23,9 +26,10 @@ ul {
     }
     li:first-child{
         flex-direction: column;
+        justify-content: center;
         align-items: initial;
     }
 }
 ul.selected{
-    background: rgba(0, 0, 0, .5);
+    background: rgba(111, 102, 59, .5);
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../item.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const durations:string[] = ['Daily', 'Weekly', 'Every Other Week', 'Bi-Monthly', 'Monthly', 'Quarterly', 'Bi-annually', 'Yearly'];
 const daysOfWeek:string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -94,7 +94,12 @@ export class ItemCrudService {
   }
 
   deleteItems(items){
-    console.log('items to delete: ', items);
-    return this.http.delete(this.url + 'deleteItems', items).toPromise();
+    let body:any = JSON.stringify(items);
+    let headers = new HttpHeaders({'Content-Type': 'application/json'})
+    let options = {
+          headers: headers,
+          body: body
+        };
+    return this.http.delete(this.url + 'deleteItems', options).toPromise();
   }
 }

@@ -1,13 +1,19 @@
+@import "../../styles.scss";
+.table_container {
+    margin-top: 20px;
+}
 ul {
     list-style: none;
     display: inline-grid;
     grid-template-rows: auto;
-    grid-template-columns: 125px 200px 100px 60px;
-    border: 1px solid black;
+    grid-template-columns: $grid-col-one $grid-col-two $grid-col-three $grid-col-four;
+    border: 1px solid $input-border-color;
     margin: 0px;
     padding: 0px;
+    font-size: 13px;
+    color: $input-color;
     & li {
-        border: 1px solid black;
+        border: 1px solid $input-border-color;
         padding: 5px;
         display: flex;
         align-items: center;
@@ -24,10 +30,14 @@ ul {
     }
 }
 .list_container{
-    border: 1px solid black;
+    border: 1px solid $input-border-color;
     display: inline-block;
 }
 .list:nth-child(odd) {
     display: inherit;
-    background: lightcyan;
+    background: #1d1d1d;
+}
+button {
+    float: right;
+    margin: 5px -2px 0px 0px;
 }

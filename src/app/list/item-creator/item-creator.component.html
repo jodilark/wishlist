@@ -39,17 +39,11 @@
       </div>
     </div>
     <div class="form_controls">
+      <button *ngIf="!additionalDetails" (click)="addDetails()">Add Details</button>
+      <p *ngIf="!additionalDetails">- or -</p>
       <button *ngIf="!additionalDetails" (click)="createAndGenerate();itemForm.submit(); itemForm.reset()">Create and Generate Schedule</button>
       <button type="submit" *ngIf="additionalDetails" (click)="create();itemForm.reset()">Submit</button>
-      <button *ngIf="!additionalDetails" (click)="addDetails()">Add Details</button>
+      <button type="reset" *ngIf="additionalDetails" (click)="clearDetails();itemForm.reset()" style="margin-top: 10px;">Cancel</button>
     </div>
   </form>
-  <div>
-    <p>item {{name}}</p>
-    <p>how much {{cost | currency}}</p>
-    <p>wantByDate {{dueDate | date}}</p>
-    <p>next pay date {{nextPayDate | date}}</p>
-    <p>Depoosit {{deposit | currency}}</p>
-    <p>Duration {{frequency}}</p>
-  </div>
 </div>

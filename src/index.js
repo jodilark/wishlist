@@ -75,11 +75,18 @@ app.post('/api/createItem', (req, res, next) => {
 });
 
 app.delete('/api/deleteItems', (req, res, next) => {
-    console.log(req.body)
-    // items.foreach((e, i)=>{
-    //     items.splice(req.body.indexOf(e), 1);
-    // });
-    res.status(200).send(req.body);
+    let nameList = req.body.map(item => { return item.name });
+
+    items = items.filter((item, i) => {
+        // debugger
+        if(nameList.indexOf(item.name) > -1){
+            return;
+        } else {
+            return item;
+        }
+    })
+    
+    res.status(200).send(items);
 });
 
 app.listen(port, function(){

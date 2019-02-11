@@ -3,7 +3,6 @@ import { Item } from '../item.model';
 import { ItemCrudService } from '../shared/item-crud.service';
 
 const local:any = new Date();
-var selected:any = [];
 
 @Component({
   selector: 'app-list',
@@ -16,6 +15,7 @@ export class ListComponent implements OnInit {
   durations:any = ['Weekly', 'Every Other Week', 'Bi-Monthly', 'Monthly', 'Quarterly', 'Bi-annually', 'Yearly'];
   item: Item;
   itemList: any;
+  selected:any = [];
 
   constructor(private itemService:ItemCrudService) { }
 
@@ -50,18 +50,18 @@ export class ListComponent implements OnInit {
 
   onSelectedItem(event: Item){
     if(event.selected){
-      selected.push(event);
+      this.selected.push(event);
     } else {
-      selected.splice(selected.indexOf(event), 1);
+      this.selected.splice(this.selected.indexOf(event), 1);
     }
     setTimeout(()=>{
-      console.log(selected);
+      console.log(this.selected);
     },0);
   }
 
   deleteSelected(){
-    if(selected.length > 0){
-      this.itemService.deleteItems(selected)
+    if(this.selected.length > 0){
+      this.itemService.deleteItems(this.selected)
       .then(res => {
         this.ngOnInit();
       });

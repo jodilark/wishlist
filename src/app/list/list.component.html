@@ -1,6 +1,5 @@
 <app-item-creator (newItem)="onNewItem($event)"></app-item-creator>
-<h4>List</h4>
-<div>
+<div class="table_container">
   <div class="table_header">
     <ul>
       <li>
@@ -20,4 +19,4 @@
     </div>
   </div>
 </div>
-<button (click)="deleteSelected()">Delete Selected</button>
+<button [disabled]="selected.length < 1" (click)="deleteSelected()">Delete Selected</button>

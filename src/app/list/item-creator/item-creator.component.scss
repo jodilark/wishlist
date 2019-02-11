@@ -1,15 +1,15 @@
+@import "../../../styles.scss";
 form {
     display: flex;
     flex-direction: column;
 }
 .input_group_default {
-    width: 200px;
-    border: 1px solid lightgray;
-    height: 40px;
+    border: 1px solid $input-border-color;
+    height: 50px;
     padding: 9px 5px;
     position: relative;
     label{
-        color: slategray;
+        color: $input-color;
     }
     input, select {
         display: inherit;
@@ -25,15 +25,15 @@ form {
         outline: none;
     }
 }
+
 .input_group_focus {
-    width: 200px;
-    height: 40px;
+    height: 50px;
     position: relative;
     label {
         font-size: 0.8em;
         letter-spacing: .1em;
         position: absolute;
-        color: inherit;
+        color: $input-color;
         top:2px;
         left:3px;
     }
@@ -47,17 +47,25 @@ form {
         width: 100%;
         padding-top: 14px;
         z-index: 1;
-        border: 1px solid lightgray;
+        border: 1px solid $input-border-color;
+        color: $input-placeholder-color;
     }
     input:focus, select:focus {
-        border: 2px solid cornflowerblue;
+        border: 2px solid #5cd49c;
         outline: none;
+        color: $input-placeholder-color !important;
     }
+}
+input::placeholder, select::placeholder {
+    color: $input-placeholder-color;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+input.ng-valid.ng-dirty.ng-touched {
+    color: $input-placeholder-color !important;
 }
 select {
     -webkit-appearance: none;
@@ -67,9 +75,8 @@ select {
     border-radius: 0px;
 }
 .radio_input {
-    height: 40px;
-    width: 200px;
-    border: 1px solid lightgray;
+    height: 50px;
+    border: 1px solid $input-border-color;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -77,6 +84,7 @@ select {
     label {
         font-size: 0.8em;
         letter-spacing: .1em;
+        color: $input-color;
     }
     span {
         display: flex;
@@ -97,9 +105,9 @@ select {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    width: 200px;
-    button {
-        height: 40px;
-        min-height: 40px;
+    p {
+        margin: 5px;
+        text-align: center;
+        color: $input-color;
     }
 }

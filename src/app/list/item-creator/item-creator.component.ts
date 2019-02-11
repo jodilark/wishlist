@@ -23,10 +23,11 @@ export class ItemCreatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.dateOrAmount = 'Date'
+    this.dateOrAmount = 'Date';
   }
 
   createAndGenerate(){
+    if(!this.name || !this.cost) return;
     const item = new Item();
     item.name = this.name;
     item.dueDate = this.dueDate;
@@ -35,6 +36,12 @@ export class ItemCreatorComponent implements OnInit {
   }
   addDetails(){
     this.additionalDetails = true;
+  }
+  clearDetails(){
+    this.additionalDetails = false;
+    setTimeout(()=>{
+      this.ngOnInit();
+    })
   }
   create(){
     const item = new Item();

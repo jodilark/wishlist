@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+$input-color: #708090;
+$input-border-color: #525252;
+$input-placeholder-color: #d3d3d3;
+$grid-col-one: 87px;
+$grid-col-two: 160px;
+$grid-col-three: 60px;
+$grid-col-four: 48px;
+
+main {
+    background: #101210;
+    height: 100vh;
+    margin: 0px;
+    padding: 10px;
+}
+button {
+    height: 40px;
+    min-height: 40px;
+    border: 1px solid #c5ae47;
+    color: #c5ae47;
+    background-image: radial-gradient(#2c622c, #223322, #1a221a);
+}
+button:disabled {
+    height: 40px;
+    min-height: 40px;
+    border: 1px solid #6e622c;
+    color: #6e622c;
+    background-image: none;
+    background: #3c413c;
+}
