@@ -79,8 +79,9 @@ export class ItemCrudService {
     // cost 10; deposit 2; costPerDepositAmount 5
     // costPerDepositAmount * frequency
     if(item.deposit){
+      var simplify = item.frequency.split(' '), simplifyString = simplify.join('');
       costPerDepositAmount = item.cost / item.deposit;
-      daysTilReady = costPerDepositAmount * frequencyMilsKey[item.frequency];
+      daysTilReady = costPerDepositAmount * frequencyMilsKey[simplifyString];
       startDateInMil = localInMil + (milInDays * daysTilReady);
       item.dueDate = new Date(startDateInMil).toString();
     } else {

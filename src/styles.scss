@@ -2,6 +2,7 @@
 $input-color: #708090;
 $input-border-color: #525252;
 $input-placeholder-color: #d3d3d3;
+$button-border-input-highlight-color: #c5ae47;
 $grid-col-one: 87px;
 $grid-col-two: 160px;
 $grid-col-three: 60px;
@@ -16,7 +17,7 @@ main {
 button {
     height: 40px;
     min-height: 40px;
-    border: 1px solid #c5ae47;
+    border: 1px solid $button-border-input-highlight-color;
     color: #c5ae47;
     background-image: radial-gradient(#2c622c, #223322, #1a221a);
 }

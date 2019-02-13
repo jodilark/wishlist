@@ -54,15 +54,13 @@ export class ListComponent implements OnInit {
     } else {
       this.selected.splice(this.selected.indexOf(event), 1);
     }
-    setTimeout(()=>{
-      console.log(this.selected);
-    },0);
   }
 
   deleteSelected(){
     if(this.selected.length > 0){
       this.itemService.deleteItems(this.selected)
       .then(res => {
+        this.selected = [];
         this.ngOnInit();
       });
     }

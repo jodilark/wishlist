@@ -51,7 +51,7 @@ form {
         color: $input-placeholder-color;
     }
     input:focus, select:focus {
-        border: 2px solid #5cd49c;
+        border: 2px solid $button-border-input-highlight-color;
         outline: none;
         color: $input-placeholder-color !important;
     }
