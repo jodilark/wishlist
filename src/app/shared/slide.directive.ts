@@ -22,7 +22,7 @@ export class SlideDirective {
   @HostListener('touchstart', ['$event'])
   onTouchStart(event) {
     if (event.target.getAttribute('draggable')) {
-      this.currentX = event.touches[0].clientX;
+      this.currentX = this.elementX;
       this.selectedElement = event.target;
       event.preventDefault(); 
     }
@@ -30,22 +30,21 @@ export class SlideDirective {
 
   @HostListener('touchmove', ['$event'])
   onTouchMove(event) {
-    var maxWidth = this.selectedElement.parentElement.scrollWidth - this.selectedElement.scrollWidth;
-    this.movedX = event.touches[0].clientX;
+    var maxWidth = 300;
+    this.movedX = event.touches[0].clientX - this.selectedElement.clientWidth;
     this.moveAmount = this.movedX - this.currentX;
     this.moveAmount += this.elementX;
     if(maxWidth > this.moveAmount && this.moveAmount > 0){
+      console.log(maxWidth)
       event.target.style.left = this.moveAmount + 'px';
-      this.percentage = this.moveAmount/this.selectedElement.parentElement.scrollWidth;
-      console.log(this.percentage)
+      this.percentage = this.moveAmount/maxWidth;
     }
   }
 
   @HostListener('touchend', ['$event'])
   onTouchEnd(event) {
-    this.currentX = event.changedTouches[0].clientX;
     this.movedX = null;
-    this.elementX = this.moveAmount;
+    this.elementX = this.selectedElement.offsetLeft;
     this.current.emit(this.percentage);
   }
 

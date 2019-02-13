@@ -6,13 +6,14 @@ p {
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    display: inline-block;
+    display: block;
     position: absolute;
     left: 0px;
     bottom: -11px;
 }
 .slide_container {
     width: 300px;
+    max-width: 300px;
     height: 10px;
     background: slategray;
     position: relative;
