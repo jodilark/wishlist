@@ -32,12 +32,12 @@ export class SlideDirective {
   onTouchMove(event) {
     var maxWidth = 300;
     this.movedX = event.touches[0].clientX - this.selectedElement.clientWidth;
-    this.moveAmount = this.movedX - this.currentX;
-    this.moveAmount += this.elementX;
-    if(maxWidth > this.moveAmount && this.moveAmount > 0){
-      console.log(maxWidth)
+    var moveDif = this.movedX - this.currentX;
+    this.moveAmount = Math.round(moveDif += this.elementX);
+    if(maxWidth >= this.moveAmount && this.moveAmount > 0){
       event.target.style.left = this.moveAmount + 'px';
       this.percentage = this.moveAmount/maxWidth;
+      this.current.emit(this.percentage);
     }
   }
 
@@ -45,7 +45,6 @@ export class SlideDirective {
   onTouchEnd(event) {
     this.movedX = null;
     this.elementX = this.selectedElement.offsetLeft;
-    this.current.emit(this.percentage);
   }
 
   constructor(el: ElementRef) { 

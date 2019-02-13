@@ -9,7 +9,7 @@ export class SliderComponent implements OnInit {
 
   begin:number = 0;
   end:number = 50;
-  currentValue:number;
+  currentValue:number = 0;
 
   constructor() { }
 
