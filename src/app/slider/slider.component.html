@@ -1,0 +1,9 @@
+<p>
+  slider works!
+</p>
+<div class="curent_value" >{{currentValue}}</div>
+<p>{{begin}}</p>
+<div class="slide_container">
+  <div class="slide" (current)="setCurrent($event)" appSlide></div>
+</div>
+<p>{{end}}</p>

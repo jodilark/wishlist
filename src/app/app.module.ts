@@ -9,6 +9,8 @@ import { ItemCreatorComponent } from './list/item-creator/item-creator.component
 import { FormsModule } from '@angular/forms';
 import { FormatterDirective } from './shared/formatter.directive';
 import { InputFormatterDirective } from './shared/input-formatter.directive';
+import { SliderComponent } from './slider/slider.component';
+import { SlideDirective } from './shared/slide.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { InputFormatterDirective } from './shared/input-formatter.directive';
     CardComponent,
     ItemCreatorComponent,
     FormatterDirective,
-    InputFormatterDirective
+    InputFormatterDirective,
+    SliderComponent,
+    SlideDirective
   ],
   imports: [
     BrowserModule,
