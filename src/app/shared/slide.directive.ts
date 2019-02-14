@@ -5,46 +5,83 @@ import { Directive, ElementRef, HostListener, Output, EventEmitter } from '@angu
 })
 export class SlideDirective {
 
-  // @HostListener('click', ['$event.target'])
-  // onClick(btn){
-  //   debugger
-  // };
-
-  currentX;
-  movedX;
-  selectedElement;
-  elementX = 0;
-  moveAmount;
-  percentage;
+  currentX:number;
+  movedX:number;
+  selectedElement:any;
+  elementX:number = 0;
+  moveAmount:number;
+  percentage:number;
+  maxWidth:number = 300;
+  over:boolean = true;
 
   @Output() current = new EventEmitter<any>();
-  // this.current.emit(this.passedItem);
-  @HostListener('touchstart', ['$event'])
-  onTouchStart(event) {
+
+  private start(event){
     if (event.target.getAttribute('draggable')) {
       this.currentX = this.elementX;
       this.selectedElement = event.target;
       event.preventDefault(); 
     }
   }
-
-  @HostListener('touchmove', ['$event'])
-  onTouchMove(event) {
-    var maxWidth = 300;
+  private move(event){
+    let moveDif:number;
     this.movedX = event.touches[0].clientX - this.selectedElement.clientWidth;
-    var moveDif = this.movedX - this.currentX;
+    moveDif = this.movedX - this.currentX;
     this.moveAmount = Math.round(moveDif += this.elementX);
-    if(maxWidth >= this.moveAmount && this.moveAmount > 0){
+    if(this.maxWidth >= this.moveAmount && this.moveAmount > 0){
       event.target.style.left = this.moveAmount + 'px';
-      this.percentage = this.moveAmount/maxWidth;
+      this.percentage = this.moveAmount/this.maxWidth;
       this.current.emit(this.percentage);
     }
   }
-
-  @HostListener('touchend', ['$event'])
-  onTouchEnd(event) {
+  private moveMouse(event){
+    let moveDif:number;
+    this.movedX = event.clientX - this.selectedElement.clientWidth;
+    moveDif = this.movedX - this.currentX;
+    this.moveAmount = Math.round(moveDif += this.elementX);
+    if(this.maxWidth >= this.moveAmount && this.moveAmount > 0){
+      event.target.style.left = this.moveAmount + 'px';
+      this.percentage = this.moveAmount/this.maxWidth;
+      this.current.emit(this.percentage);
+    }
+  }
+  private end(event){
     this.movedX = null;
     this.elementX = this.selectedElement.offsetLeft;
+    this.selectedElement = null;
+  }
+
+  @HostListener('touchstart', ['$event'])
+  private onTouchStart(event) {
+    this.start(event);
+  }
+
+  @HostListener('touchmove', ['$event'])
+  private onTouchMove(event) {
+    this.move(event);
+  }
+
+  @HostListener('touchend', ['$event'])
+  private onTouchEnd(event) {
+    this.end(event);
+  }
+
+  //for desktop (non-touch)
+  @HostListener('mousedown', ['$event'])
+  private onMouseDown(event) { this.start(event) }
+  @HostListener('mousemove', ['$event'])
+  private onMouseMove(event) {
+    if(this.selectedElement && this.over){ this.moveMouse(event) };
+  }
+  @HostListener('mouseover', ['$event'])
+  private onMouseOver(event) { this.over = true }
+  @HostListener('mouseup', ['$event'])
+  private onMouseUp(event) {
+    if(this.selectedElement){ this.end(event) };
+  }
+  @HostListener('mouseout', ['$event'])
+  private onMouseOut(event) {
+    if(this.selectedElement){ this.end(event) };
   }
 
   constructor(el: ElementRef) { 
